@@ -70,7 +70,7 @@ Pre_Trained-GPT-Model-chatbot
 
 # ⚙️ Installation
 Clone repository terlebih dahulu
-git clone https://github.com/FauzanDwi2617/Pre_Trained-GPT-Model-chatbot.git
+git clone https://github.com/Fauzan2617/Pre_Trained-GPT-Model-chatbot.git
 
 Masuk ke folder project
 - cd Pre_Trained-GPT-Model-chatbot
