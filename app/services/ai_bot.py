@@ -37,6 +37,15 @@ class ChatBotService :
         
         # 1. encode mengubah kata menjadi angka
         # eos_token itu untuk memberi tahu model ini akhir dari kalimat 
+        '''
+        untuk return_tensors di ubah menjadi tensor setelah di tokenizer:
+        | Nilai  | Artinya    |
+        | ------ | ---------- |
+        | `'pt'` | PyTorch    |
+        | `'tf'` | TensorFlow |
+        | `'np'` | NumPy      |
+        '''
+
         new_user_input_ids = self.tokenizer.encode(
             user_text + self.tokenizer.eos_token, return_tensors = 'pt'
         )
@@ -70,5 +79,21 @@ class ChatBotService :
             # # Token padding menggunakan token akhir kalimat
             pad_token_id = self.tokenizer.eos_token_id
         )
+        
+        # 4. Mengubah hasil tensor kembali menjadi teks biasa
+        # decode digunakan untuk mengubah token angka menjadi kalimat
+        response_text = self.tokenizer.decoder(
+            new_chat_history_ids[:, bot_input_ids.shape[-1]: ][0],
+            
+            # Kita hanya mengambil bagian teks yang baru dihasilkan oleh model
+            # bukan seluruh percakapan sebelumnya
+            skip_special_tokens = True
+        )
+        
+        # Mengembalikan dua nilai:
+        # response_text -> teks jawaban chatbot
+        # new_chat_history_ids -> riwayat percakapan terbaru
+        # yang bisa dipakai lagi untuk percakapan berikutnya
+        return response_text, new_chat_history_ids
             
         
