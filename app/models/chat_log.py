@@ -20,8 +20,6 @@ class ChatLog (Base) :
     
     # ini nama table di database nanti
     __tablename__ = "chat_logs"
-    
-    
     # ====================
     # KOLOM-KOLOM DATABASE
     # ====================
@@ -61,5 +59,6 @@ class ChatLog (Base) :
     # - menggunakan waktu UTC (standar global)
     timestamp = Column(
         DateTime,
-        default=datetime.datetime.utcnow
+        default=datetime.datetime.now
     )
+    

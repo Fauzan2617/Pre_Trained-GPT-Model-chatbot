@@ -82,7 +82,7 @@ class ChatBotService :
         
         # 4. Mengubah hasil tensor kembali menjadi teks biasa
         # decode digunakan untuk mengubah token angka menjadi kalimat
-        response_text = self.tokenizer.decoder(
+        response_text = self.tokenizer.decode(
             new_chat_history_ids[:, bot_input_ids.shape[-1]: ][0],
             
             # Kita hanya mengambil bagian teks yang baru dihasilkan oleh model

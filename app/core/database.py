@@ -38,7 +38,7 @@ engine = create_engine (
     # Check_same_thread = False artinya
     # - mengizinkan satu koneksi oleh beberapa thread
     # - karena FastAPI bersifat multi-thread
-    connect_args= {"check_same_thread ": False}
+    connect_args= {"check_same_thread": False}
 )
 
 
